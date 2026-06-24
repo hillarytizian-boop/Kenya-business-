@@ -21,7 +21,12 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar view={view} setView={setView} user={user} setUser={setUser} />
+      <Navbar 
+        view={view} 
+        setView={setView} 
+        user={user} 
+        setUser={setUser}
+      />
       <div style={{ paddingTop: 64 }}>
         <DashboardPage user={user} setView={setView} />
       </div>

@@ -1,106 +1,89 @@
+'use client';
+
 import { useState } from 'react';
 
-const COLORS = {
-  white: "#FFFFFF",
-  green: "#0B6E4F",
-  greenLight: "#E6F4EF",
-  greenMid: "#1A8A63",
-  ink: "#0D1117",
-  inkMed: "#374151",
-  inkLight: "#6B7280",
-  border: "#E4E7EC",
-  surface: "#F2F4F7",
-  red: "#D92D20",
-};
+interface NavbarProps {
+  view: string;
+  setView: (view: string) => void;
+  user: any;
+  setUser: (user: any) => void;
+  onLoginOpen?: () => void;
+}
 
-export function Navbar({ view, setView, user, setUser, onLoginOpen }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+export function Navbar({ view, setView, user, setUser, onLoginOpen }: NavbarProps) {
   return (
     <nav style={{
-      position: "fixed",
+      position: 'fixed',
       top: 0,
       left: 0,
       right: 0,
       zIndex: 1000,
-      background: "rgba(255,255,255,0.97)",
-      borderBottom: `1px solid ${COLORS.border}`,
-      backdropFilter: "blur(12px)",
+      background: 'rgba(255,255,255,0.97)',
+      borderBottom: '1px solid #E4E7EC',
       height: 64,
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 20px',
     }}>
-      <div style={{
-        maxWidth: 1280,
-        margin: "0 auto",
-        padding: "0 20px",
-        display: "flex",
-        alignItems: "center",
-        height: 64,
-        gap: 24,
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-          <div style={{
-            width: 36,
-            height: 36,
-            background: `linear-gradient(135deg, ${COLORS.green}, ${COLORS.greenMid})`,
-            borderRadius: 10,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 18,
-          }}>🇰🇪</div>
-          <div>
-            <div style={{ fontSize: 15, fontWeight: 800, color: COLORS.ink, lineHeight: 1 }}>
-              Business Hub
-            </div>
-            <div style={{ fontSize: 10, fontWeight: 600, color: COLORS.green, letterSpacing: 1.5, lineHeight: 1.4 }}>
-              KENYA
-            </div>
-          </div>
-        </div>
-
-        <div style={{ flex: 1 }} />
-
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          {user ? (
-            <button onClick={() => setView("dashboard")} style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "8px 16px",
-              fontSize: 14,
-              fontWeight: 500,
-              color: COLORS.inkMed,
-            }}>
-              Dashboard
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span style={{ fontSize: 24 }}>🇰🇪</span>
+        <span style={{ fontWeight: 800, fontSize: 16 }}>Business Hub</span>
+        <span style={{ color: '#0B6E4F', fontSize: 10, fontWeight: 600, letterSpacing: 1.5 }}>KENYA</span>
+      </div>
+      
+      <div style={{ flex: 1 }} />
+      
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button style={{
+          padding: '8px 16px',
+          background: 'transparent',
+          color: '#374151',
+          border: '1px solid #E4E7EC',
+          borderRadius: 8,
+          cursor: 'pointer',
+        }} onClick={() => setView('browse')}>
+          Browse
+        </button>
+        
+        {user ? (
+          <>
+            <span style={{ fontSize: 14 }}>👋 {user.name}</span>
+            <button style={{
+              padding: '8px 16px',
+              background: '#D92D20',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+            }} onClick={() => { setUser(null); localStorage.removeItem('user'); }}>
+              Logout
             </button>
-          ) : (
-            <>
-              <button onClick={onLoginOpen} style={{
-                padding: "8px 16px",
-                fontSize: 14,
-                background: "transparent",
-                color: COLORS.inkMed,
-                border: `1.5px solid ${COLORS.border}`,
-                borderRadius: 10,
-                cursor: "pointer",
-              }}>
-                Sign In
-              </button>
-              <button onClick={() => setView("sell")} style={{
-                padding: "8px 18px",
-                fontSize: 14,
-                background: COLORS.green,
-                color: "white",
-                border: "none",
-                borderRadius: 10,
-                cursor: "pointer",
-                fontWeight: 600,
-              }}>
-                Post Free
-              </button>
-            </>
-          )}
-        </div>
+          </>
+        ) : (
+          <>
+            <button style={{
+              padding: '8px 16px',
+              background: 'transparent',
+              color: '#0B6E4F',
+              border: '1px solid #0B6E4F',
+              borderRadius: 8,
+              cursor: 'pointer',
+            }} onClick={onLoginOpen}>
+              Sign In
+            </button>
+            <button style={{
+              padding: '8px 18px',
+              background: '#0B6E4F',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              cursor: 'pointer',
+              fontWeight: 600,
+            }} onClick={() => setView('sell')}>
+              Post Free
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
