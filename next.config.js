@@ -8,6 +8,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Tell Next.js to use src directory
+  distDir: '.next',
+  // Enable App Router
   experimental: {
     appDir: true,
   },
