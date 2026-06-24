@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: business-hub-kenya
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    buildFilter:
+      paths:
+        - app/**
+        - components/**
+        - pages/**
+        - styles/**
+        - public/**
+        - package.json
+        - next.config.js
+        - tsconfig.json
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

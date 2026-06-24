@@ -1,0 +1,10 @@
+backend/
+backend/**
+backend/*
+
+# Keep other excludes
+node_modules/
+.git/
+*.log
+.env
+.DS_Store
