@@ -79,15 +79,6 @@ export function LoginModal({ isOpen, onClose, onLogin }) {
             {loading ? 'Loading...' : 'Sign In'}
           </button>
         </form>
-        <button onClick={onClose} style={{
-          marginTop: 12,
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          color: '#6B7280',
-          width: '100%',
-          textAlign: 'center',
-        }}>Close</button>
       </div>
     </div>
   );

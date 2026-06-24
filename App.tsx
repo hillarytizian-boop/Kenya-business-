@@ -87,9 +87,9 @@ export const STATS = [
 // ─── MAIN APP ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [view, setView] = useState("home");
-  const [filter, setFilter] = useState(null);
-  const [listing, setListing] = useState(null);
-  const [user, setUser] = useState(null);
+  const [filter, setFilter] = useState<string | null>(null);
+  const [listing, setListing] = useState<any>(null);
+  const [user, setUser] = useState<any>(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ export default function App() {
     }
   }, []);
 
-  const handleLogin = (userData) => {
+  const handleLogin = (userData: any) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
     setIsLoginOpen(false);
