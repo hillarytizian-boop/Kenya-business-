@@ -10,9 +10,7 @@ interface NavbarProps {
   onLoginOpen?: () => void;
 }
 
-export function Navbar({ view, setView, user, setUser, onLoginOpen }: NavbarProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+export function Navbar({ view, setView, user, setUser, onLoginOpen = () => {} }: NavbarProps) {
   return (
     <nav style={{
       position: 'fixed',

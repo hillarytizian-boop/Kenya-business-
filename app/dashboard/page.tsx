@@ -21,7 +21,13 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar view={view} setView={setView} user={user} setUser={setUser} />
+      <Navbar 
+        view={view} 
+        setView={setView} 
+        user={user} 
+        setUser={setUser}
+        onLoginOpen={() => {}}
+      />
       <div style={{ paddingTop: 64 }}>
         <DashboardPage user={user} setView={setView} />
       </div>
