@@ -92,3 +92,5 @@ Thumbs.db
 *.tgz
 *.rar
 *.7z
+.vercel
+.env*

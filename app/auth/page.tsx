@@ -1,6 +1,6 @@
 'use client';
 
-import { LoginModal } from '../components/LoginModal';
+import { LoginModal } from '../../components/LoginModal';
 import { useState } from 'react';
 
 export default function AuthPage() {
