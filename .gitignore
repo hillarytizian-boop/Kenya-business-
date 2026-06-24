@@ -94,3 +94,5 @@ Thumbs.db
 *.7z
 .vercel
 .env*
+backend/
+backend_temp/
