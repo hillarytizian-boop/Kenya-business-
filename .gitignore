@@ -1,0 +1,94 @@
+# ===== SECURITY: NEVER COMMIT THESE =====
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.p7b
+*.der
+secrets/
+credentials/
+*.secret
+*.secure
+*.gpg
+
+# ===== DEPENDENCIES =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ===== BUILD OUTPUT =====
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# ===== ENVIRONMENT =====
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===== LOGS =====
+logs/
+*.log
+*.log.*
+server.log
+
+# ===== DATABASE =====
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.dump
+postgres-data/
+migrations/*.sql
+
+# ===== TEMP FILES =====
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.pid
+*.seed
+*.pid.lock
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# ===== OS =====
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ===== BACKUPS =====
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+
+# ===== MISC =====
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
