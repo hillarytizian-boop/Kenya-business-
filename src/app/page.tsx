@@ -295,7 +295,7 @@ function Navbar({ view, setView, user, setUser }) {
           <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: 4 }}>
             {[["Browse", "browse"], ["Sell", "sell"], ["How it Works", "how"]].map(([label, v]) => (
               <button key={v} onClick={() => setView(v)}
-                style={{ background: "none", border: "none", cursor: "pointer", padding: "8px 14px", borderRadius: 8, fontSize: 14, fontWeight: 500, color: view === v ? COLORS.green : COLORS.inkMed, background: view === v ? COLORS.greenLight : "transparent", transition: "all 0.15s" }}>
+                style={{ background: view === v ? COLORS.greenLight : "transparent", border: "none", cursor: "pointer", padding: "8px 14px", borderRadius: 8, fontSize: 14, fontWeight: 500, color: view === v ? COLORS.green : COLORS.inkMed, transition: "all 0.15s" }}>
                 {label}
               </button>
             ))}
