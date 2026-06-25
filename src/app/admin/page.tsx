@@ -15,6 +15,7 @@ export default function AdminPage() {
         setView={setView} 
         user={user} 
         setUser={setUser}
+        onLoginOpen={() => {}}
       />
       <div style={{ paddingTop: 64 }}>
         <AdminDashboard setView={setView} />

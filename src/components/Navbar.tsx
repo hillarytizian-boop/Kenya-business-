@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from "react";
 
 const COLORS = {
@@ -48,8 +50,7 @@ function Avatar({ name, size = 36, color = COLORS.green }) {
   );
 }
 
-// NAVBAR - EXACTLY YOUR CODE with Login Modal added
-function Navbar({ view, setView, user, setUser, onLoginOpen }) {
+function Navbar({ view, setView, user, setUser, onLoginOpen = () => {} }) {
   const scrollY = useScrollY();
   const [menuOpen, setMenuOpen] = useState(false);
   const elevated = scrollY > 10;
@@ -99,7 +100,7 @@ function Navbar({ view, setView, user, setUser, onLoginOpen }) {
           ))}
         </div>
 
-        {/* CTA - UPDATED with Login Modal support */}
+        {/* CTA */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginLeft: "auto" }}>
           {user ? (
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>

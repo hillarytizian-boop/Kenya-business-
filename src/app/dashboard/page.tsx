@@ -26,6 +26,7 @@ export default function Dashboard() {
         setView={setView} 
         user={user} 
         setUser={setUser}
+        onLoginOpen={() => {}}
       />
       <div style={{ paddingTop: 64 }}>
         <DashboardPage user={user} setView={setView} />

@@ -2,10 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
+import { HeroSection } from '../components/HeroSection';
+import { CategoriesSection } from '../components/CategoriesSection';
+import { FeaturedListings } from '../components/FeaturedListings';
+import { HowItWorks } from '../components/HowItWorks';
+import { TrustBanner } from '../components/TrustBanner';
+import { Footer } from '../components/Footer';
+import { LoginModal } from '../components/LoginModal';
 
 export default function Home() {
   const [user, setUser] = useState(null);
   const [view, setView] = useState('home');
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('user');
@@ -18,6 +26,12 @@ export default function Home() {
     }
   }, []);
 
+  const handleLogin = (userData: any) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+    setIsLoginOpen(false);
+  };
+
   return (
     <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <Navbar 
@@ -25,28 +39,21 @@ export default function Home() {
         setView={setView} 
         user={user} 
         setUser={setUser}
+        onLoginOpen={() => setIsLoginOpen(true)}
       />
-      <main style={{ paddingTop: 64, textAlign: 'center', padding: '120px 20px' }}>
-        <h1 style={{ fontSize: 'clamp(32px, 5vw, 58px)', fontWeight: 800 }}>
-          Business Hub Kenya
-        </h1>
-        <p style={{ fontSize: 18, color: '#374151', marginTop: 16 }}>
-          Kenya's #1 Business Marketplace
-        </p>
-        <div style={{ marginTop: 32 }}>
-          <button style={{
-            padding: '12px 24px',
-            background: '#0B6E4F',
-            color: 'white',
-            border: 'none',
-            borderRadius: 10,
-            fontSize: 16,
-            cursor: 'pointer',
-          }} onClick={() => setView('browse')}>
-            Browse Listings
-          </button>
-        </div>
+      <main style={{ paddingTop: 64 }}>
+        <HeroSection setView={setView} />
+        <CategoriesSection setView={setView} setFilter={() => {}} />
+        <FeaturedListings setView={setView} setListing={() => {}} />
+        <HowItWorks />
+        <TrustBanner setView={setView} />
       </main>
+      <Footer setView={setView} />
+      <LoginModal 
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onLogin={handleLogin}
+      />
     </div>
   );
 }
