@@ -48,12 +48,12 @@ const LOCATIONS = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika",
 
 const LISTINGS = [
   // ─── BUSINESSES ──────────────────────────────────────────────────────────────
-  { id: 1, category: "businesses", title: "Established Supermarket – Westlands", price: 4500000, priceLabel: "KES 4.5M", location: "Westlands, Nairobi", description: "Profitable supermarket with 8 years of operation. Monthly revenue KES 800K+. Well-equipped, loyal customer base, prime location.", image: "🏪", verified: true, featured: true, views: 1842, rating: 4.8, reviews: 23, seller: "James Mwangi", sellerVerified: true, daysAgo: 2, badge: "Featured", tags: ["Turnkey", "Profitable", "Prime Location"] },
+  { id: 1, category: "businesses", title: "Established Supermarket – Westlands", price: 4500000, priceLabel: "KES 4.5M", location: "Westlands, Nairobi", description: "Profitable supermarket with 8 years of operation. Monthly revenue KES 800K+.", image: "🏪", verified: true, featured: true, views: 1842, rating: 4.8, reviews: 23, seller: "James Mwangi", sellerVerified: true, daysAgo: 2, badge: "Featured", tags: ["Turnkey", "Profitable", "Prime Location"] },
   { id: 2, category: "businesses", title: "Café & Bakery – Karen Shopping Centre", price: 2800000, priceLabel: "KES 2.8M", location: "Karen, Nairobi", description: "Popular café with established clientele. Fully equipped kitchen, outdoor seating, 50 capacity.", image: "☕", verified: true, featured: false, views: 1204, rating: 4.6, reviews: 45, seller: "Grace Wanjiru", sellerVerified: true, daysAgo: 5, badge: null, tags: ["Equipment Included", "High Traffic", "Profitable"] },
-  { id: 3, category: "businesses", title: "Hardware Store – Industrial Area", price: 12000000, priceLabel: "KES 12M", location: "Industrial Area, Nairobi", description: "Large hardware store with 5 years operation. Stock worth KES 4M included. Established supplier network.", image: "🔨", verified: true, featured: true, views: 890, rating: 4.3, reviews: 18, seller: "Peter Kimani", sellerVerified: true, daysAgo: 10, badge: "Featured", tags: ["Stock Included", "Supplier Network", "Good Location"] },
-  { id: 4, category: "businesses", title: "Salon & Spa – Kilimani", price: 950000, priceLabel: "KES 950K", location: "Kilimani, Nairobi", description: "Modern salon with 6 workstations. High-end clientele. Established 4 years. Monthly profit KES 150K+", image: "💇", verified: true, featured: false, views: 756, rating: 4.9, reviews: 67, seller: "Mary Achieng", sellerVerified: true, daysAgo: 3, badge: null, tags: ["High-End", "Loyal Clientele", "Profitable"] },
+  { id: 3, category: "businesses", title: "Hardware Store – Industrial Area", price: 12000000, priceLabel: "KES 12M", location: "Industrial Area, Nairobi", description: "Large hardware store with 5 years operation. Stock worth KES 4M included.", image: "🔨", verified: true, featured: true, views: 890, rating: 4.3, reviews: 18, seller: "Peter Kimani", sellerVerified: true, daysAgo: 10, badge: "Featured", tags: ["Stock Included", "Supplier Network", "Good Location"] },
+  { id: 4, category: "businesses", title: "Salon & Spa – Kilimani", price: 950000, priceLabel: "KES 950K", location: "Kilimani, Nairobi", description: "Modern salon with 6 workstations. High-end clientele. Monthly profit KES 150K+", image: "💇", verified: true, featured: false, views: 756, rating: 4.9, reviews: 67, seller: "Mary Achieng", sellerVerified: true, daysAgo: 3, badge: null, tags: ["High-End", "Loyal Clientele", "Profitable"] },
   { id: 5, category: "businesses", title: "Pharmacy – CBD", price: 5600000, priceLabel: "KES 5.6M", location: "CBD, Nairobi", description: "Well-established pharmacy in the city centre. Stock worth KES 2M included.", image: "💊", verified: true, featured: false, views: 2341, rating: 4.7, reviews: 34, seller: "Nairobi Pharmacy Ltd", sellerVerified: true, daysAgo: 7, badge: null, tags: ["Stock Included", "Central Location", "Good Returns"] },
-  { id: 6, category: "businesses", title: "Car Wash & Detailing – Westlands", price: 1800000, priceLabel: "KES 1.8M", location: "Westlands, Nairobi", description: "Busy car wash with 5 bays. 3 years operation. Monthly revenue KES 300K+.", image: "🚗", verified: true, featured: false, views: 567, rating: 4.2, reviews: 45, seller: "CarCare Kenya", sellerVerified: true, daysAgo: 12, badge: null, tags: ["Equipment", "Busy Location", "Good Revenue"] },
+  { id: 6, category: "businesses", title: "Car Wash & Detailing – Westlands", price: 1800000, priceLabel: "KES 1.8M", location: "Westlands, Nairobi", description: "Busy car wash with 5 bays. Monthly revenue KES 300K+.", image: "🚗", verified: true, featured: false, views: 567, rating: 4.2, reviews: 45, seller: "CarCare Kenya", sellerVerified: true, daysAgo: 12, badge: null, tags: ["Equipment", "Busy Location", "Good Revenue"] },
   { id: 7, category: "businesses", title: "Electronics Shop – Mombasa Road", price: 3500000, priceLabel: "KES 3.5M", location: "Mombasa Road, Nairobi", description: "Electronic shop selling phones, TVs, and accessories. Stock worth KES 1.5M.", image: "📱", verified: true, featured: false, views: 234, rating: 4.5, reviews: 23, seller: "Tech World", sellerVerified: true, daysAgo: 8, badge: null, tags: ["Stock Included", "Good Location", "Profitable"] },
   { id: 8, category: "businesses", title: "Laundromat – Kilimani", price: 750000, priceLabel: "KES 750K", location: "Kilimani, Nairobi", description: "Self-service laundromat with 8 machines. Good location near apartments.", image: "🧺", verified: false, featured: false, views: 345, rating: 4.3, reviews: 56, seller: "Clean & Fresh", sellerVerified: false, daysAgo: 6, badge: null, tags: ["Self-Service", "Good Location", "Low Overhead"] },
   { id: 9, category: "businesses", title: "Restaurant – Ngong Road", price: 4200000, priceLabel: "KES 4.2M", location: "Ngong Road, Nairobi", description: "Popular restaurant serving African cuisine. 60 capacity. Fully equipped.", image: "🍽️", verified: true, featured: true, views: 789, rating: 4.8, reviews: 89, seller: "African Flavours", sellerVerified: true, daysAgo: 4, badge: "Hot", tags: ["Fully Equipped", "Good Reputation", "Profitable"] },
@@ -71,7 +71,7 @@ const LISTINGS = [
   { id: 20, category: "properties", title: "Land 1 Acre – Karen", price: 8500000, priceLabel: "KES 8.5M", location: "Karen, Nairobi", description: "Prime 1-acre plot in Karen. Ready for construction.", image: "🌳", verified: true, featured: false, views: 456, rating: 4.7, reviews: 9, seller: "Karen Land Agency", sellerVerified: true, daysAgo: 8, badge: null, tags: ["Prime Location", "Ready to Build", "Good Neighborhood"] },
   // ─── VEHICLES ──────────────────────────────────────────────────────────────
   { id: 21, category: "vehicles", title: "Toyota Land Cruiser V8 2019", price: 6200000, priceLabel: "KES 6.2M", location: "Karen, Nairobi", description: "Single owner, full service history. Pearl white, leather interior.", image: "🚙", verified: true, featured: false, views: 892, rating: 4.7, reviews: 12, seller: "AutoKe Premium", sellerVerified: true, daysAgo: 3, badge: null, tags: ["Single Owner", "Full History", "Petrol"] },
-  { id: 22, category: "vehicles", title: "Toyota Hilux Double Cab 2021", price: 4500000, priceLabel: "KES 4.5M", location: "Thika, Kiambu", description: "Low mileage 35,000km. 4x4, automatic. Perfect for business.", image: "🚛", verified: true, featured: false, views: 2345, rating: 4.8, reviews: 23, seller: "Hilux Motors", sellerVerified: true, daysAgo: 6, badge: null, tags: ["Low Mileage", "4x4", "Automatic"] },
+  { id: 22, category: "vehicles", title: "Toyota Hilux Double Cab 2021", price: 4500000, priceLabel: "KES 4.5M", location: "Thika, Kiambu", description: "Low mileage 35,000km. 4x4, automatic.", image: "🚛", verified: true, featured: false, views: 2345, rating: 4.8, reviews: 23, seller: "Hilux Motors", sellerVerified: true, daysAgo: 6, badge: null, tags: ["Low Mileage", "4x4", "Automatic"] },
   { id: 23, category: "vehicles", title: "Nissan X-Trail 2020", price: 3500000, priceLabel: "KES 3.5M", location: "Nakuru, Nakuru", description: "Well maintained SUV. One owner. 7-seater.", image: "🚗", verified: true, featured: false, views: 1567, rating: 4.5, reviews: 34, seller: "Nakuru Auto Centre", sellerVerified: true, daysAgo: 11, badge: null, tags: ["7-Seater", "Well Maintained", "One Owner"] },
   { id: 24, category: "vehicles", title: "Motorcycle – Boxer BM150", price: 65000, priceLabel: "KES 65K", location: "Kisumu, Kisumu", description: "2022 model. Low mileage. Perfect for delivery.", image: "🏍️", verified: false, featured: false, views: 892, rating: 4.3, reviews: 45, seller: "Kisumu Motors", sellerVerified: false, daysAgo: 8, badge: null, tags: ["Low Mileage", "Good Condition", "Economical"] },
   { id: 25, category: "vehicles", title: "Mercedes Benz E200 2018", price: 4800000, priceLabel: "KES 4.8M", location: "Westlands, Nairobi", description: "Elegant Mercedes E200. Full service history.", image: "🚘", verified: true, featured: false, views: 678, rating: 4.6, reviews: 18, seller: "Luxury Auto", sellerVerified: true, daysAgo: 5, badge: null, tags: ["Luxury", "Well Maintained", "Full History"] },
@@ -79,10 +79,10 @@ const LISTINGS = [
   { id: 27, category: "vehicles", title: "Isuzu D-Max 2021", price: 4200000, priceLabel: "KES 4.2M", location: "Thika, Kiambu", description: "Double cab pick-up. 4x4, diesel. 30,000km.", image: "🚜", verified: true, featured: false, views: 345, rating: 4.7, reviews: 15, seller: "Pickup Kenya", sellerVerified: true, daysAgo: 4, badge: null, tags: ["Double Cab", "4x4", "Diesel"] },
   { id: 28, category: "vehicles", title: "VW Polo Vivo 2019", price: 1500000, priceLabel: "KES 1.5M", location: "CBD, Nairobi", description: "Well-maintained VW Polo. 40,000km.", image: "🚗", verified: false, featured: false, views: 456, rating: 4.2, reviews: 8, seller: "City Cars", sellerVerified: false, daysAgo: 12, badge: null, tags: ["City", "Good Condition", "Economical"] },
   // ─── JOBS ──────────────────────────────────────────────────────────────────
-  { id: 29, category: "jobs", title: "Senior Software Engineer – Fintech", price: 350000, priceLabel: "KES 350K/mo", location: "CBD, Nairobi", description: "Fintech seeking Senior Software Engineer. React, Node.js, Python. 5+ years.", image: "💻", verified: true, featured: true, views: 2145, rating: 5.0, reviews: 8, seller: "PesaPulse Kenya", sellerVerified: true, daysAgo: 0, badge: "Urgent", tags: ["Remote OK", "Equity", "Health Insurance"] },
+  { id: 29, category: "jobs", title: "Senior Software Engineer – Fintech", price: 350000, priceLabel: "KES 350K/mo", location: "CBD, Nairobi", description: "Fintech seeking Senior Software Engineer. React, Node.js, Python.", image: "💻", verified: true, featured: true, views: 2145, rating: 5.0, reviews: 8, seller: "PesaPulse Kenya", sellerVerified: true, daysAgo: 0, badge: "Urgent", tags: ["Remote OK", "Equity", "Health Insurance"] },
   { id: 30, category: "jobs", title: "Sales Manager – FMCG", price: 180000, priceLabel: "KES 180K/mo", location: "Mombasa Road, Nairobi", description: "FMCG company looking for experienced Sales Manager. 10+ years.", image: "📊", verified: true, featured: false, views: 1342, rating: 4.4, reviews: 6, seller: "Global Brands Ltd", sellerVerified: true, daysAgo: 3, badge: null, tags: ["FMCG", "Managerial", "Bonuses"] },
   { id: 31, category: "jobs", title: "Registered Nurse – Aga Khan Hospital", price: 120000, priceLabel: "KES 120K/mo", location: "Westlands, Nairobi", description: "Seeking experienced RN for specialized unit. 3+ years ICU experience.", image: "🏥", verified: true, featured: false, views: 2341, rating: 4.6, reviews: 12, seller: "Aga Khan Hospital", sellerVerified: true, daysAgo: 5, badge: "New", tags: ["ICU Experience", "Full Benefits", "Permanent"] },
-  { id: 32, category: "jobs", title: "Digital Marketing Specialist", price: 95000, priceLabel: "KES 95K/mo", location: "Karen, Nairobi", description: "E-commerce startup looking for digital marketing specialist. SEO, PPC.", image: "📱", verified: true, featured: false, views: 1789, rating: 4.2, reviews: 9, seller: "ShopAfrica", sellerVerified: true, daysAgo: 7, badge: null, tags: ["SEO", "PPC", "E-commerce"] },
+  { id: 32, category: "jobs", title: "Digital Marketing Specialist", price: 95000, priceLabel: "KES 95K/mo", location: "Karen, Nairobi", description: "E-commerce startup looking for digital marketing specialist.", image: "📱", verified: true, featured: false, views: 1789, rating: 4.2, reviews: 9, seller: "ShopAfrica", sellerVerified: true, daysAgo: 7, badge: null, tags: ["SEO", "PPC", "E-commerce"] },
   { id: 33, category: "jobs", title: "Accountant – Manufacturing", price: 85000, priceLabel: "KES 85K/mo", location: "Industrial Area, Nairobi", description: "Manufacturing company seeking Accountant with 3+ years. CPA required.", image: "📊", verified: true, featured: false, views: 567, rating: 4.3, reviews: 7, seller: "Manufacturing Ltd", sellerVerified: true, daysAgo: 8, badge: null, tags: ["CPA", "Manufacturing", "Full Time"] },
   { id: 34, category: "jobs", title: "Construction Project Manager", price: 150000, priceLabel: "KES 150K/mo", location: "Nairobi Wide", description: "Seeking Project Manager for construction projects. 5+ years experience.", image: "🏗️", verified: true, featured: false, views: 234, rating: 4.5, reviews: 5, seller: "BuildCo Kenya", sellerVerified: true, daysAgo: 10, badge: null, tags: ["Construction", "Managerial", "5+ Years"] },
   { id: 35, category: "jobs", title: "Customer Service Manager", price: 75000, priceLabel: "KES 75K/mo", location: "Mombasa, Mombasa", description: "Telecom company seeking Customer Service Manager. 3+ years.", image: "📞", verified: true, featured: false, views: 345, rating: 4.1, reviews: 6, seller: "Telecom Kenya", sellerVerified: true, daysAgo: 6, badge: null, tags: ["Telecom", "Managerial", "Full Time"] },
@@ -98,7 +98,7 @@ const LISTINGS = [
   { id: 44, category: "services", title: "Event Planning & Catering", price: 30000, priceLabel: "From KES 30K", location: "Nairobi Wide", description: "Full-service event planning and catering. Weddings, corporate events.", image: "🎊", verified: true, featured: false, views: 234, rating: 4.8, reviews: 56, seller: "EventPro Kenya", sellerVerified: true, daysAgo: 7, badge: null, tags: ["Weddings", "Corporate", "Catering"] },
   // ─── ELECTRONICS ────────────────────────────────────────────────────────────
   { id: 45, category: "electronics", title: "iPhone 15 Pro Max 256GB – New", price: 189000, priceLabel: "KES 189K", location: "CBD, Nairobi", description: "Brand new, sealed in box. Natural Titanium. Warranty included.", image: "📱", verified: true, featured: false, views: 4523, rating: 4.5, reviews: 156, seller: "iStore Kenya", sellerVerified: true, daysAgo: 1, badge: "New", tags: ["Sealed", "Warranty", "Original"] },
-  { id: 46, category: "electronics", title: "Samsung QLED 65\" TV – 2024", price: 185000, priceLabel: "KES 185K", location: "Westlands, Nairobi", description: "Samsung QLED 65-inch TV with 4K resolution. Smart TV. Brand new.", image: "📺", verified: true, featured: false, views: 2341, rating: 4.7, reviews: 89, seller: "Electronics Hub", sellerVerified: true, daysAgo: 3, badge: null, tags: ["4K", "Smart TV", "New"] },
+  { id: 46, category: "electronics", title: "Samsung QLED 65\" TV – 2024", price: 185000, priceLabel: "KES 185K", location: "Westlands, Nairobi", description: "Samsung QLED 65-inch TV with 4K resolution. Brand new.", image: "📺", verified: true, featured: false, views: 2341, rating: 4.7, reviews: 89, seller: "Electronics Hub", sellerVerified: true, daysAgo: 3, badge: null, tags: ["4K", "Smart TV", "New"] },
   { id: 47, category: "electronics", title: "MacBook Pro M3 Pro 2024", price: 350000, priceLabel: "KES 350K", location: "Karen, Nairobi", description: "MacBook Pro M3 Pro chip. 16-inch, 36GB RAM, 1TB SSD.", image: "💻", verified: true, featured: true, views: 789, rating: 4.9, reviews: 23, seller: "MacWorld Kenya", sellerVerified: true, daysAgo: 2, badge: "Featured", tags: ["M3 Pro", "36GB RAM", "1TB SSD"] },
   { id: 48, category: "electronics", title: "PlayStation 5 – Disc Edition", price: 95000, priceLabel: "KES 95K", location: "Nakuru, Nakuru", description: "Brand new PS5 console with controller. 2-year warranty.", image: "🎮", verified: false, featured: false, views: 2345, rating: 4.6, reviews: 45, seller: "GameHub KE", sellerVerified: false, daysAgo: 6, badge: null, tags: ["New", "Warranty", "Disc Edition"] },
   { id: 49, category: "electronics", title: "Dell XPS 15 – 2024", price: 280000, priceLabel: "KES 280K", location: "Mombasa, Mombasa", description: "Dell XPS 15 with Intel i9, 32GB RAM, 1TB SSD.", image: "💻", verified: true, featured: false, views: 456, rating: 4.8, reviews: 34, seller: "Dell Kenya", sellerVerified: true, daysAgo: 5, badge: null, tags: ["i9", "32GB", "1TB SSD"] },
@@ -115,7 +115,7 @@ const LISTINGS = [
   { id: 58, category: "fashion", title: "Custom Suits & Tailoring Business", price: 850000, priceLabel: "KES 850K", location: "Westlands, Nairobi", description: "Established tailoring business with equipment, fabric stock.", image: "👔", verified: true, featured: false, views: 234, rating: 4.7, reviews: 34, seller: "TailorMade KE", sellerVerified: true, daysAgo: 11, badge: null, tags: ["Equipment", "Customer Base", "Profitable"] },
   // ─── EDUCATION ──────────────────────────────────────────────────────────────
   { id: 59, category: "education", title: "Pre-School Franchise – Karen", price: 4500000, priceLabel: "KES 4.5M", location: "Karen, Nairobi", description: "Established pre-school with 4 years operation. 50 students. Good reputation.", image: "🏫", verified: true, featured: true, views: 678, rating: 4.9, reviews: 11, seller: "Little Scholars", sellerVerified: true, daysAgo: 5, badge: "Featured", tags: ["Franchise", "Established", "Good Reputation"] },
-  { id: 60, category: "education", title: "Online Tutoring Services", price: 2500, priceLabel: "From KES 2.5K/hr", location: "Nairobi (Remote)", description: "Online tutoring in Mathematics, Sciences, and Languages. All levels.", image: "📚", verified: true, featured: false, views: 345, rating: 4.7, reviews: 45, seller: "TutorKenya", sellerVerified: true, daysAgo: 3, badge: null, tags: ["Online", "All Levels", "Experienced"] },
+  { id: 60, category: "education", title: "Online Tutoring Services", price: 2500, priceLabel: "From KES 2.5K/hr", location: "Nairobi (Remote)", description: "Online tutoring in Mathematics, Sciences, and Languages.", image: "📚", verified: true, featured: false, views: 345, rating: 4.7, reviews: 45, seller: "TutorKenya", sellerVerified: true, daysAgo: 3, badge: null, tags: ["Online", "All Levels", "Experienced"] },
   // ─── HEALTHCARE ─────────────────────────────────────────────────────────────
   { id: 61, category: "healthcare", title: "Dental Clinic Equipment Lot", price: 2800000, priceLabel: "KES 2.8M", location: "Westlands, Nairobi", description: "Complete dental clinic equipment. 2 chairs, X-ray machine, sterilizer.", image: "🦷", verified: true, featured: false, views: 234, rating: 4.5, reviews: 6, seller: "Dental Supply KE", sellerVerified: true, daysAgo: 12, badge: null, tags: ["Complete", "Well Maintained", "Ready"] },
   { id: 62, category: "healthcare", title: "Pharmacy – Established Business", price: 5600000, priceLabel: "KES 5.6M", location: "Nakuru, Nakuru", description: "Established pharmacy in Nakuru. Stock worth KES 1.5M included.", image: "💊", verified: true, featured: false, views: 456, rating: 4.3, reviews: 9, seller: "Nakuru Pharmacy", sellerVerified: true, daysAgo: 7, badge: null, tags: ["Established", "Stock Included", "Good Location"] },
@@ -165,9 +165,9 @@ const GlobalStyles = () => (
     .fade-up-4 { transition-delay: 0.3s; }
     .card-hover { transition: box-shadow 0.22s ease, transform 0.22s ease; }
     .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
-    .btn-primary { background: ${COLORS.green}; color: white; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; border-radius: 10px; transition: background 0.18s, transform 0.18s, box-shadow 0.18s; }
+    .btn-primary { background: ${COLORS.green}; color: white; border: none; cursor: pointer; font-weight: 600; border-radius: 10px; transition: background 0.18s, transform 0.18s, box-shadow 0.18s; }
     .btn-primary:hover { background: ${COLORS.greenMid}; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(11,110,79,0.3); }
-    .btn-ghost { background: transparent; color: ${COLORS.inkMed}; border: 1.5px solid ${COLORS.border}; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 500; border-radius: 8px; transition: all 0.18s; }
+    .btn-ghost { background: transparent; color: ${COLORS.inkMed}; border: 1.5px solid ${COLORS.border}; cursor: pointer; font-weight: 500; border-radius: 8px; transition: all 0.18s; }
     .btn-ghost:hover { background: ${COLORS.surface}; border-color: ${COLORS.inkFaint}; }
     .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 100px; letter-spacing: 0.3px; }
     .badge-green { background: ${COLORS.greenLight}; color: ${COLORS.green}; }
@@ -201,7 +201,7 @@ function Avatar({ name, size = 36, color = COLORS.green }) {
       width: size, height: size, borderRadius: "50%",
       background: color + "18", border: `1.5px solid ${color}30`,
       display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: size * 0.36, fontWeight: 700, color, fontFamily: "'Plus Jakarta Sans', sans-serif",
+      fontSize: size * 0.36, fontWeight: 700, color,
       flexShrink: 0,
     }}>{initials}</div>
   );
@@ -261,11 +261,6 @@ function Navbar({ view, setView, user, setUser }) {
     }, 1000);
   };
 
-  const handleLogout = () => {
-    setUser(null);
-    setView("home");
-  };
-
   return (
     <>
       <nav style={{
@@ -280,7 +275,7 @@ function Navbar({ view, setView, user, setUser }) {
           <button onClick={() => setView("home")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <div style={{ width: 36, height: 36, background: `linear-gradient(135deg, ${COLORS.green}, ${COLORS.greenMid})`, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🇰🇪</div>
             <div>
-              <div className="jakarta" style={{ fontSize: 15, fontWeight: 800, color: COLORS.ink, lineHeight: 1 }}>Business Hub</div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: COLORS.ink, lineHeight: 1 }}>Business Hub</div>
               <div style={{ fontSize: 10, fontWeight: 600, color: COLORS.green, letterSpacing: 1.5, lineHeight: 1.4 }}>KENYA</div>
             </div>
           </button>
@@ -295,7 +290,17 @@ function Navbar({ view, setView, user, setUser }) {
           <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: 4 }}>
             {[["Browse", "browse"], ["Sell", "sell"], ["How it Works", "how"]].map(([label, v]) => (
               <button key={v} onClick={() => setView(v)}
-                style={{ background: view === v ? COLORS.greenLight : "transparent", border: "none", cursor: "pointer", padding: "8px 14px", borderRadius: 8, fontSize: 14, fontWeight: 500, color: view === v ? COLORS.green : COLORS.inkMed, transition: "all 0.15s" }}>
+                style={{
+                  background: view === v ? COLORS.greenLight : "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "8px 14px",
+                  borderRadius: 8,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: view === v ? COLORS.green : COLORS.inkMed,
+                  transition: "all 0.15s"
+                }}>
                 {label}
               </button>
             ))}
@@ -330,13 +335,33 @@ function Navbar({ view, setView, user, setUser }) {
           <div style={{ padding: "12px 20px 16px", borderTop: `1px solid ${COLORS.border}`, display: "flex", flexDirection: "column", gap: 4 }}>
             {[["🏠 Home", "home"], ["📋 Browse", "browse"], ["💼 Sell", "sell"], ["ℹ️ How it Works", "how"], ["📊 Dashboard", "dashboard"]].map(([label, v]) => (
               <button key={v} onClick={() => { setView(v); setMenuOpen(false); }}
-                style={{ background: "none", border: "none", cursor: "pointer", padding: "10px 12px", borderRadius: 8, fontSize: 14, fontWeight: 500, color: COLORS.inkMed, textAlign: "left", background: view === v ? COLORS.greenLight : "transparent" }}>
+                style={{
+                  background: view === v ? COLORS.greenLight : "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "10px 12px",
+                  borderRadius: 8,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: COLORS.inkMed,
+                  textAlign: "left"
+                }}>
                 {label}
               </button>
             ))}
             {!user && (
               <button onClick={() => { setIsLoginOpen(true); setMenuOpen(false); }}
-                style={{ background: "none", border: "none", cursor: "pointer", padding: "10px 12px", borderRadius: 8, fontSize: 14, fontWeight: 500, color: COLORS.inkMed, textAlign: "left" }}>
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "10px 12px",
+                  borderRadius: 8,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: COLORS.inkMed,
+                  textAlign: "left"
+                }}>
                 🔑 Sign In
               </button>
             )}
@@ -357,7 +382,7 @@ function Navbar({ view, setView, user, setUser }) {
               style={{ position: "absolute", top: 16, right: 16, background: "none", border: "none", cursor: "pointer", fontSize: 20, color: COLORS.inkFaint }}>✕</button>
             <div style={{ textAlign: "center", marginBottom: 24 }}>
               <div style={{ fontSize: 48, marginBottom: 8 }}>🇰🇪</div>
-              <h2 className="jakarta" style={{ fontSize: 24, fontWeight: 800, color: COLORS.ink }}>Welcome Back</h2>
+              <h2 style={{ fontSize: 24, fontWeight: 800, color: COLORS.ink }}>Welcome Back</h2>
               <p style={{ fontSize: 14, color: COLORS.inkMed }}>Sign in to access your dashboard</p>
             </div>
             <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
