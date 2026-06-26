@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How it Works - Business Hub Kenya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .how-page { padding-top: 80px; min-height: 100vh; background: var(--white); }
+        .how-hero { text-align: center; padding: 60px 20px; }
+        .how-hero h1 { font-size: 32px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); }
+        .how-hero p { font-size: 16px; color: var(--inkMed); max-width: 480px; margin: 8px auto 0; }
+        .steps-container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+        .step-item { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
+        .step-number { font-size: 48px; font-weight: 800; color: var(--greenLight); font-family: 'Plus Jakarta Sans', sans-serif; min-width: 80px; }
+        .step-content h3 { font-size: 20px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); }
+        .step-content p { font-size: 15px; color: var(--inkMed); line-height: 1.6; margin-top: 4px; }
+        .step-icon-big { font-size: 40px; }
+        @media (max-width: 768px) {
+            .step-item { flex-direction: column; gap: 12px; }
+            .step-number { min-width: auto; font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><!-- Same navbar --></nav>
+    <div class="how-page">
+        <div class="how-hero">
+            <div class="section-label">HOW IT WORKS</div>
+            <h1>Start Selling in Minutes</h1>
+            <p>The simplest way to reach verified buyers across Kenya.</p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <div class="step-icon-big">📝</div>
+                    <h3>Create an Account</h3>
+                    <p>Sign up free with your email or phone number. Verify your identity to start selling.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <div class="step-icon-big">💳</div>
+                    <h3>Pay KES 100 via M-Pesa</h3>
+                    <p>Secure STK Push. Instant payment confirmation. Your listing goes live immediately.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <div class="step-icon-big">📣</div>
+                    <h3>Your Listing Goes Live</h3>
+                    <p>Reach thousands of buyers across Kenya. Manage everything from your dashboard.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <div class="step-icon-big">🤝</div>
+                    <h3>Connect & Close Deals</h3>
+                    <p>Buyers pay KES 50 to unlock your contact details. You get genuine leads.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

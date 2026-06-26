@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell - Business Hub Kenya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sell-page { padding-top: 80px; min-height: 100vh; background: var(--offWhite); }
+        .sell-container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+        .sell-container h1 { font-size: 28px; font-weight: 800; color: var(--ink); margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .sell-container > p { color: var(--inkMed); font-size: 15px; margin-bottom: 32px; }
+        .progress { display: flex; gap: 8px; margin-bottom: 32px; align-items: center; }
+        .progress .step { display: flex; align-items: center; gap: 8px; flex: 1; }
+        .progress .step:last-child { flex: 0; }
+        .progress .circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+        .progress .circle.active { background: var(--green); color: white; border: 2px solid var(--green); }
+        .progress .circle.done { background: var(--green); color: white; border: 2px solid var(--green); }
+        .progress .circle.inactive { background: var(--surface); color: var(--inkFaint); border: 2px solid var(--border); }
+        .progress .label { font-size: 12px; font-weight: 600; }
+        .progress .label.active { color: var(--green); }
+        .progress .label.inactive { color: var(--inkFaint); }
+        .progress .line { flex: 1; height: 2px; border-radius: 1px; }
+        .progress .line.done { background: var(--green); }
+        .progress .line.inactive { background: var(--border); }
+        .form-card { background: white; border-radius: 20px; padding: 32px; border: 1px solid var(--border); }
+        .form-card .step-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { font-size: 13px; font-weight: 600; color: var(--inkMed); display: block; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; color: var(--ink); background: white; font-family: 'Inter', sans-serif; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 32px 20px; text-align: center; cursor: pointer; background: var(--offWhite); transition: border-color 0.18s; }
+        .upload-area:hover { border-color: var(--green); }
+        .upload-area .icon { font-size: 32px; margin-bottom: 8px; }
+        .upload-area .title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .upload-area .sub { font-size: 12px; color: var(--inkFaint); }
+        .review-box { background: var(--offWhite); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
+        .review-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .review-box .detail { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; margin-top: 10px; }
+        .payment-summary { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+        .payment-summary .row { display: flex; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+        .payment-summary .row:last-child { border-bottom: none; }
+        .payment-summary .total { font-weight: 800; font-size: 18px; color: var(--green); font-family: 'Plus Jakarta Sans', sans-serif; }
+        .btn-group { display: flex; gap: 12px; margin-top: 16px; }
+        .btn-group .btn-ghost { flex: 1; padding: 12px; }
+        .btn-group .btn-primary { flex: 2; padding: 14px; font-size: 15px; }
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+            .progress .step { flex-direction: column; align-items: flex-start; }
+            .progress .circle { width: 28px; height: 28px; font-size: 11px; }
+            .btn-group { flex-direction: column; }
+            .btn-group .btn-ghost, .btn-group .btn-primary { flex: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar"><!-- Same navbar --></nav>
+    <div class="sell-page">
+        <div class="sell-container">
+            <h1>Post a Listing</h1>
+            <p>Reach thousands of buyers across Kenya for only KES 100</p>
+
+            <div class="progress" id="progress">
+                <div class="step"><div class="circle active" id="step1Circle">1</div><span class="label active" id="step1Label">Listing Details</span><div class="line inactive" id="line1"></div></div>
+                <div class="step"><div class="circle inactive" id="step2Circle">2</div><span class="label inactive" id="step2Label">Contact Info</span><div class="line inactive" id="line2"></div></div>
+                <div class="step"><div class="circle inactive" id="step3Circle">3</div><span class="label inactive" id="step3Label">Payment</span></div>
+            </div>
+
+            <div class="form-card">
+                <!-- Step 1 -->
+                <div id="step1">
+                    <h2 class="step-title">Listing Details</h2>
+                    <div class="form-group"><label>Listing Title *</label><input type="text" placeholder="e.g. Toyota Land Cruiser V8 2019" id="title"></div>
+                    <div class="form-group"><label>Description *</label><textarea placeholder="Describe what you're selling in detail…" id="description"></textarea></div>
+                    <div class="form-group"><label>Price (KES) *</label><input type="number" placeholder="e.g. 1500000" id="price"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Category *</label><select id="category"><option value="">Select category</option></select></div>
+                        <div class="form-group"><label>Location *</label><select id="location"><option value="">Select location</option></select></div>
+                    </div>
+                    <div class="form-group"><label>Photos & Videos</label><div class="upload-area"><div class="icon">📸</div><div class="title">Drop files or click to upload</div><div class="sub">PNG, JPG, MP4 up to 10MB each</div></div></div>
+                    <button class="btn-primary" style="width:100%;padding:14px;font-size:15px;margin-top:8px;" onclick="goToStep(2)">Continue →</button>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step2" style="display:none;">
+                    <h2 class="step-title">Contact Information</h2>
+                    <p style="font-size:13px;color:var(--inkMed);padding:12px 14px;background:var(--blueLight);border-radius:10px;margin-bottom:16px;">ℹ️ Your contact details are hidden by default. Buyers pay KES 50 to unlock them.</p>
+                    <div class="form-group"><label>Phone Number (M-Pesa verified) *</label><input type="tel" placeholder="+254 7XX XXX XXX" id="phone"></div>
+                    <div class="form-group"><label>WhatsApp Number</label><input type="tel" placeholder="+254 7XX XXX XXX" id="whatsapp"></div>
+                    <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" id="email"></div>
+                    <div class="form-group"><label>Business Name (optional)</label><input type="text" placeholder="e.g. Nairobi Motors Ltd" id="business"></div>
+                    <div class="btn-group"><button class="btn-ghost" onclick="goToStep(1)">← Back</button><button class="btn-primary" onclick="goToStep(3)">Review Listing →</button></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="step3" style="display:none;">
+                    <h2 class="step-title">Review & Pay</h2>
+                    <div class="review-box">
+                        <h3 id="reviewTitle">Your Listing Title</h3>
+                        <p id="reviewDescription">Description will appear here…</p>
+                        <div class="detail"><span>📍 <span id="reviewLocation">Location</span></span><span>📂 <span id="reviewCategory">Category</span></span><span>💰 KES <span id="reviewPrice">Price</span></span></div>
+                    </div>
+                    <div class="payment-summary">
+                        <div class="row"><span style="color:var(--inkMed);">Listing publication fee</span><span class="jakarta" style="font-weight:700;">KES 100</span></div>
+                        <div class="row"><span style="font-weight:700;font-size:16px;">Total</span><span class="total">KES 100</span></div>
+                    </div>
+                    <div style="background:var(--greenLight);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--inkMed);">✅ Your listing will go live immediately after payment confirmation via M-Pesa STK Push</div>
+                    <div class="btn-group"><button class="btn-ghost" onclick="goToStep(2)">← Back</button><button class="btn-primary" onclick="submitListing()">📱 Pay KES 100 via M-Pesa</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const LOCATIONS = ["Nairobi", "Mombasa", "Kisumu", "Nakuru", "Eldoret", "Thika", "Malindi", "Kitale", "Garissa", "Nyeri"];
+        const CATEGORIES = [{id:"businesses",label:"Businesses"},{id:"properties",label:"Properties"},{id:"vehicles",label:"Vehicles"},{id:"jobs",label:"Jobs"},{id:"services",label:"Services"},{id:"electronics",label:"Electronics"}];
+
+        let currentStep = 1;
+
+        // Populate selects
+        CATEGORIES.forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c.id;
+            opt.textContent = c.label;
+            document.getElementById('category')?.appendChild(opt);
+        });
+        LOCATIONS.forEach(l => {
+            const opt = document.createElement('option');
+            opt.value = l;
+            opt.textContent = l;
+            document.getElementById('location')?.appendChild(opt);
+        });
+
+        function goToStep(step) {
+            currentStep = step;
+            document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+            document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+            document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+
+            for (let i = 1; i <= 3; i++) {
+                const circle = document.getElementById(`step${i}Circle`);
+                const label = document.getElementById(`step${i}Label`);
+                const line = document.getElementById(`line${i}`);
+                if (i < step) {
+                    circle.className = 'circle done';
+                    label.className = 'label active';
+                    if (line) line.className = 'line done';
+                } else if (i === step) {
+                    circle.className = 'circle active';
+                    label.className = 'label active';
+                    if (line) line.className = 'line inactive';
+                } else {
+                    circle.className = 'circle inactive';
+                    label.className = 'label inactive';
+                    if (line) line.className = 'line inactive';
+                }
+            }
+
+            if (step === 3) updateReview();
+        }
+
+        function updateReview() {
+            document.getElementById('reviewTitle').textContent = document.getElementById('title').value || 'Your Listing Title';
+            document.getElementById('reviewDescription').textContent = document.getElementById('description').value || 'Description will appear here…';
+            document.getElementById('reviewLocation').textContent = document.getElementById('location').value || 'Location';
+            document.getElementById('reviewCategory').textContent = CATEGORIES.find(c => c.id === document.getElementById('category').value)?.label || 'Category';
+            document.getElementById('reviewPrice').textContent = document.getElementById('price').value ? parseInt(document.getElementById('price').value).toLocaleString() : 'Price';
+        }
+
+        function submitListing() {
+            alert('🎉 Listing Published!\nKES 100 received. Your listing is now live and visible to buyers across Kenya.\nRef: BHK-' + Date.now().toString().slice(-6));
+            location.href = 'index.html';
+        }
+
+        // Mobile menu toggle (reuse from main)
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

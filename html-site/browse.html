@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse - Business Hub Kenya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .browse-page { padding-top: 80px; min-height: 100vh; background: var(--offWhite); }
+        .browse-header { background: white; border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 64px; z-index: 100; }
+        .browse-filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+        .browse-filters input, .browse-filters select { padding: 9px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; background: white; color: var(--ink); }
+        .browse-filters input { flex: 1; min-width: 200px; }
+        .browse-grid { padding: 24px 0; }
+        .browse-grid .listings-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        .no-results { text-align: center; padding: 80px 20px; color: var(--inkLight); }
+        .no-results h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+        @media (max-width: 768px) {
+            .browse-filters { flex-direction: column; align-items: stretch; }
+            .browse-filters input, .browse-filters select { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="location.href='index.html'">
+                <div class="logo-icon">🇰🇪</div>
+                <div><div class="logo-text">Business Hub</div><div class="logo-sub">KENYA</div></div>
+            </div>
+            <div class="nav-search"><input placeholder="Search..."><span class="search-icon">🔍</span></div>
+            <div class="nav-links"><a href="browse.html">Browse</a><a href="sell.html">Sell</a><a href="how-it-works.html">How it Works</a></div>
+            <div class="nav-actions"><a href="login.html" class="btn-ghost">Sign In</a><a href="sell.html" class="btn-primary">Post Free</a></div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu"><a href="index.html">🏠 Home</a><a href="browse.html">📋 Browse</a><a href="sell.html">💼 Sell</a><a href="how-it-works.html">ℹ️ How it Works</a><a href="login.html">🔑 Sign In</a></div>
+    </nav>
+
+    <div class="browse-page">
+        <div class="browse-header">
+            <div class="container">
+                <div class="browse-filters">
+                    <input type="text" placeholder="Search listings…" id="searchInput">
+                    <select id="categoryFilter"><option value="">All Categories</option></select>
+                    <select id="locationFilter"><option value="">All Locations</option></select>
+                    <select id="sortFilter"><option value="recent">Most Recent</option><option value="price_asc">Price: Low → High</option><option value="price_desc">Price: High → Low</option></select>
+                </div>
+            </div>
+        </div>
+        <div class="browse-grid">
+            <div class="container">
+                <div id="resultsCount" style="margin-bottom:16px;font-size:14px;color:var(--inkMed);"></div>
+                <div class="listings-grid" id="browseListingsGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Categories and Locations from main script
+        const browseListings = [
+            { id: 1, category: "businesses", title: "Established Supermarket – Westlands", priceLabel: "KES 4.5M", location: "Westlands, Nairobi", description: "Profitable supermarket with 8 years of operation.", image: "🏪", verified: true, featured: true, views: 1842, rating: 4.8, reviews: 23, seller: "James Mwangi", daysAgo: 2, badge: "Featured" },
+            { id: 2, category: "properties", title: "3BR Apartment – Kilimani", priceLabel: "KES 8.5M", location: "Kilimani, Nairobi", description: "Modern 3-bedroom apartment, 120sqm.", image: "🏢", verified: true, featured: true, views: 3201, rating: 4.9, reviews: 41, seller: "Nairobi Realty Group", daysAgo: 1, badge: "Hot" },
+            { id: 3, category: "vehicles", title: "Toyota Land Cruiser V8 2019", priceLabel: "KES 6.2M", location: "Karen, Nairobi", description: "Single owner, full service history.", image: "🚙", verified: true, featured: false, views: 892, rating: 4.7, reviews: 12, seller: "AutoKe Premium", daysAgo: 3, badge: null },
+            { id: 4, category: "jobs", title: "Senior Software Engineer – Fintech", priceLabel: "KES 350K/mo", location: "CBD, Nairobi", description: "Leading fintech company seeking Senior Software Engineer.", image: "💻", verified: true, featured: true, views: 2145, rating: 5.0, reviews: 8, seller: "PesaPulse Kenya", daysAgo: 0, badge: "Urgent" },
+            { id: 5, category: "services", title: "Professional Web Design & Development", priceLabel: "From KES 25K", location: "Nairobi (Remote)", description: "Premium websites, e-commerce stores.", image: "🎨", verified: true, featured: false, views: 674, rating: 4.6, reviews: 89, seller: "TizianTech Edge", daysAgo: 5, badge: null },
+        ];
+
+        function renderBrowseListings(listings) {
+            const grid = document.getElementById('browseListingsGrid');
+            const count = document.getElementById('resultsCount');
+            if (!grid) return;
+
+            if (listings.length === 0) {
+                grid.innerHTML = `<div class="no-results"><div style="font-size:48px;margin-bottom:16px;">🔍</div><h3>No listings found</h3><p>Try adjusting your filters</p></div>`;
+                count.textContent = 'Showing 0 listings';
+                return;
+            }
+
+            count.textContent = `Showing ${listings.length} listings`;
+            grid.innerHTML = listings.map(l => {
+                const stars = '★'.repeat(Math.round(l.rating || 4.5)) + '☆'.repeat(5 - Math.round(l.rating || 4.5));
+                const badgeHtml = l.badge ? `<span class="badge ${l.badge === 'Featured' ? 'badge-saffron' : l.badge === 'Hot' ? 'badge-red' : 'badge-blue'}">${l.badge}</span>` : '';
+                const verifiedHtml = l.verified ? `<span class="badge badge-green">✓ Verified</span>` : '';
+                const daysText = l.daysAgo === 0 ? 'Today' : `${l.daysAgo}d ago`;
+
+                return `
+                    <div class="listing-card" onclick="location.href='listing.html?id=${l.id}'">
+                        <div class="listing-image">
+                            ${l.image}
+                            ${badgeHtml}
+                            ${l.featured ? '<div class="featured-star">⭐</div>' : ''}
+                            <div class="view-count">👁 ${(l.views || 0).toLocaleString()}</div>
+                        </div>
+                        <div class="listing-body">
+                            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                                <span class="badge badge-green" style="font-size:10px;">${CATEGORIES.find(c => c.id === l.category)?.label || l.category}</span>
+                                ${verifiedHtml}
+                            </div>
+                            <h3>${l.title}</h3>
+                            <div class="desc">${l.description}</div>
+                            <div class="price">${l.priceLabel}</div>
+                            <div class="meta">
+                                <span>📍 ${l.location}</span>
+                                <div><span class="stars">${stars}</span><span>(${l.reviews || 0})</span></div>
+                            </div>
+                        </div>
+                        <div class="listing-footer">
+                            <div class="seller"><div class="avatar">${l.seller.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}</div><span>${l.seller}</span></div>
+                            <span class="days">${daysText}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initial render
+        renderBrowseListings(browseListings);
+
+        // Filter functionality
+        document.getElementById('searchInput')?.addEventListener('input', filterListings);
+        document.getElementById('categoryFilter')?.addEventListener('change', filterListings);
+        document.getElementById('locationFilter')?.addEventListener('change', filterListings);
+        document.getElementById('sortFilter')?.addEventListener('change', filterListings);
+
+        function filterListings() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const location = document.getElementById('locationFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+
+            let filtered = browseListings.filter(l => {
+                const matchSearch = l.title.toLowerCase().includes(search) || l.description.toLowerCase().includes(search);
+                const matchCategory = !category || l.category === category;
+                const matchLocation = !location || l.location.includes(location);
+                return matchSearch && matchCategory && matchLocation;
+            });
+
+            if (sort === 'price_asc') filtered.sort((a, b) => parseFloat(a.priceLabel.replace(/[^0-9.]/g, '')) - parseFloat(b.priceLabel.replace(/[^0-9.]/g, '')));
+            else if (sort === 'price_desc') filtered.sort((a, b) => parseFloat(b.priceLabel.replace(/[^0-9.]/g, '')) - parseFloat(a.priceLabel.replace(/[^0-9.]/g, '')));
+            else if (sort === 'recent') filtered.sort((a, b) => a.daysAgo - b.daysAgo);
+
+            renderBrowseListings(filtered);
+        }
+
+        // Populate category filter
+        const catFilter = document.getElementById('categoryFilter');
+        if (catFilter) {
+            CATEGORIES.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id;
+                opt.textContent = c.label;
+                catFilter.appendChild(opt);
+            });
+        }
+
+        // Populate location filter
+        const locFilter = document.getElementById('locationFilter');
+        if (locFilter) {
+            ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika'].forEach(l => {
+                const opt = document.createElement('option');
+                opt.value = l;
+                opt.textContent = l;
+                locFilter.appendChild(opt);
+            });
+        }
+    </script>
+</body>
+</html>
