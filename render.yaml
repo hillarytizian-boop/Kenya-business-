@@ -1,6 +1,7 @@
 services:
+  # ─── FRONTEND (HTML Static Site) ──────────────────────────────
   - type: web
-    name: business-hub-kenya
+    name: business-hub-kenya-frontend
     runtime: node
     plan: free
     buildCommand: npm install
@@ -10,3 +11,77 @@ services:
         value: production
       - key: PORT
         value: 10000
+
+  # ─── BACKEND (NestJS API) ─────────────────────────────────────
+  - type: web
+    name: business-hub-kenya-backend
+    runtime: node
+    plan: starter
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: API_PREFIX
+        value: /api/v1
+      - key: DB_HOST
+        fromDatabase:
+          name: business-hub-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: business-hub-db
+          property: port
+      - key: DB_USERNAME
+        fromDatabase:
+          name: business-hub-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: business-hub-db
+          property: password
+      - key: DB_DATABASE
+        fromDatabase:
+          name: business-hub-db
+          property: database
+      - key: DB_SSL_MODE
+        value: require
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_EXPIRY
+        value: 24h
+      - key: JWT_REFRESH_EXPIRY
+        value: 30d
+      - key: MPESA_CONSUMER_KEY
+        sync: false   # Set manually in dashboard
+      - key: MPESA_CONSUMER_SECRET
+        sync: false
+      - key: MPESA_PASSKEY
+        sync: false
+      - key: MPESA_SHORTCODE
+        value: 174379
+      - key: MPESA_ENVIRONMENT
+        value: sandbox
+      - key: MPESA_CALLBACK_URL
+        value: https://business-hub-kenya-backend.onrender.com/api/v1/payments/mpesa/callback
+      - key: ALLOWED_ORIGINS
+        value: https://business-hub-kenya-frontend.onrender.com
+      - key: ADMIN_EMAIL
+        value: admin@businesshubkenya.com
+      - key: ADMIN_PASSWORD
+        generateValue: true
+
+  # ─── POSTGRESQL DATABASE ──────────────────────────────────────
+  - type: postgresql
+    name: business-hub-db
+    region: frankfurt   # Choose a region close to you
+    plan: starter       # Free tier available
+    databaseName: business_hub_kenya
+    postgresMajorVersion: 16
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: Allow all (Render internal)
