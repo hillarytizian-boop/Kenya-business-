@@ -58,14 +58,8 @@
 
     <script src="script.js"></script>
     <script>
-        // Categories and Locations from main script
-        const browseListings = [
-            { id: 1, category: "businesses", title: "Established Supermarket – Westlands", priceLabel: "KES 4.5M", location: "Westlands, Nairobi", description: "Profitable supermarket with 8 years of operation.", image: "🏪", verified: true, featured: true, views: 1842, rating: 4.8, reviews: 23, seller: "James Mwangi", daysAgo: 2, badge: "Featured" },
-            { id: 2, category: "properties", title: "3BR Apartment – Kilimani", priceLabel: "KES 8.5M", location: "Kilimani, Nairobi", description: "Modern 3-bedroom apartment, 120sqm.", image: "🏢", verified: true, featured: true, views: 3201, rating: 4.9, reviews: 41, seller: "Nairobi Realty Group", daysAgo: 1, badge: "Hot" },
-            { id: 3, category: "vehicles", title: "Toyota Land Cruiser V8 2019", priceLabel: "KES 6.2M", location: "Karen, Nairobi", description: "Single owner, full service history.", image: "🚙", verified: true, featured: false, views: 892, rating: 4.7, reviews: 12, seller: "AutoKe Premium", daysAgo: 3, badge: null },
-            { id: 4, category: "jobs", title: "Senior Software Engineer – Fintech", priceLabel: "KES 350K/mo", location: "CBD, Nairobi", description: "Leading fintech company seeking Senior Software Engineer.", image: "💻", verified: true, featured: true, views: 2145, rating: 5.0, reviews: 8, seller: "PesaPulse Kenya", daysAgo: 0, badge: "Urgent" },
-            { id: 5, category: "services", title: "Professional Web Design & Development", priceLabel: "From KES 25K", location: "Nairobi (Remote)", description: "Premium websites, e-commerce stores.", image: "🎨", verified: true, featured: false, views: 674, rating: 4.6, reviews: 89, seller: "TizianTech Edge", daysAgo: 5, badge: null },
-        ];
+        // Use the global LISTINGS from script.js
+        let browseListings = [];
 
         function renderBrowseListings(listings) {
             const grid = document.getElementById('browseListingsGrid');
@@ -116,6 +110,7 @@
         }
 
         // Initial render
+        browseListings = LISTINGS;
         renderBrowseListings(browseListings);
 
         // Filter functionality
@@ -130,7 +125,7 @@
             const location = document.getElementById('locationFilter').value;
             const sort = document.getElementById('sortFilter').value;
 
-            let filtered = browseListings.filter(l => {
+            let filtered = LISTINGS.filter(l => {
                 const matchSearch = l.title.toLowerCase().includes(search) || l.description.toLowerCase().includes(search);
                 const matchCategory = !category || l.category === category;
                 const matchLocation = !location || l.location.includes(location);
@@ -158,7 +153,8 @@
         // Populate location filter
         const locFilter = document.getElementById('locationFilter');
         if (locFilter) {
-            ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika'].forEach(l => {
+            const locs = [...new Set(LISTINGS.map(l => l.location.split(',')[0].trim()))].slice(0, 10);
+            locs.forEach(l => {
                 const opt = document.createElement('option');
                 opt.value = l;
                 opt.textContent = l;
