@@ -13,7 +13,7 @@ services:
     runtime: node
     plan: starter
     buildCommand: cd backend && npm install && npm run build
-    startCommand: cd backend && npm run start:prod
+    startCommand: node backend/dist/main.js
     envVars:
       - key: NODE_ENV
         value: production
