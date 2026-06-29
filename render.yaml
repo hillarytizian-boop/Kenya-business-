@@ -12,8 +12,8 @@ services:
     name: business-hub-kenya-backend
     runtime: node
     plan: starter
-    buildCommand: cd backend && npm install && npm run build
-    startCommand: node backend/dist/main.js
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
         value: production
